@@ -2,6 +2,8 @@ package be.intecbrussel;
 
 public class MainApp {
 
+    private static double myDouble;
+
     public static void main(String[] args) {
 
 
@@ -218,25 +220,99 @@ public class MainApp {
             System.out.println("Nummer is niet positive");
         }
 
-        /*int i = 1;
-        for (int j = i; j < 500000; j++) {
-            i = i + j;
-            System.out.println(i);
-        }*/
+
+
+        // Deel 1
 
         int i = 0;
         int j = 1;
-        while (j < 500000) {
-            j = i + j;
-            i = j;
+        int sum = 0;
+        int sumEvenNumbers = 0;
 
-            System.out.print(j + " ");
+        while (j < 500000){
+
+            sum = i + j;
+            i = j;
+            j = sum;
+
+            System.out.print(sum + " ");
+
+            if (sum % 2 == 0) {
+                sumEvenNumbers += sum;
+            }
+        }
+        System.out.println();
+        System.out.println("Sum of even numbers : " + sumEvenNumbers);
+
+        // Deel 2
+
+        int sumOfMultipelsOf3And17 = 0;
+        for (int k = 1; k < 10000; k++) {
+            if (k % 3 == 0 && k % 17 == 0) {
+                sumOfMultipelsOf3And17 += k;
+                System.out.print(k + " ");
+            }
+        }
+        System.out.println();
+        System.out.println("Sum van alle veelvouden van 3 en 17 is : " + sumOfMultipelsOf3And17);
+
+        System.out.println("************************************");
+
+        day = 4;
+
+        switch (day) {
+            // Meerdere cases zonder een break statements.
+            case 1, 2, 3, 4, 5:
+                System.out.println("Weekday");
+                break;
+            case 6:
+            case 7:
+                System.out.println("Weekend");
+                break;
+            default:
+                System.out.println("Invalid");
         }
 
+        int myInt = 9;
 
+        double myDouble = myInt;
 
+        System.out.println(myInt);
+        System.out.println(myDouble);
 
+        myDouble = 9.78D;
+        myInt = (int) myDouble;
 
+        System.out.println(myInt);
+        System.out.println(myDouble);
+
+        System.out.println("**********************************");
+
+        // Casting conversion (5.4) of a float literal to
+        // type int. Without the cast operator, this would
+        // be a compile-time error, because this is a
+        // narrowing conversion (5.1.3):
+        i = (int)12.5f;
+        // String conversion (5.4) of i's int value:
+        System.out.println("(int)12.5f==" + i);
+        // Assignment conversion (5.2) of i's value to type
+        // float. This is a widening conversion (5.1.2):
+        float f = i;
+        // String conversion of f's float value:
+        System.out.println("after float widening: " + f);
+        // Numeric promotion (5.6) of i's value to type
+        // float. This is a binary numeric promotion.
+        // After promotion, the operation is float*float:
+        System.out.print(f);
+        f = f * i;
+        // Two string conversions of i and f:
+        System.out.println(" * " + i + "==" + f);
+        // Method invocation conversion (5.3) of f's value
+        // to type double, needed because the method Math.sin
+        // accepts only a double argument:
+        double d = Math.sin(f);
+        // Two string conversions of f and d:
+        System.out.println("Math.sin(" + f + ")==" + d);
 
     }
 }
